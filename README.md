@@ -35,3 +35,11 @@ Origins from
 
 Mu Li, Ziqi Liu, Alex Smola, and Yu-Xiang Wang.
 DiFacto — Distributed Factorization Machines. In WSDM, 2016
+
+### OSX
+
+If openmp is not available, you probably need to set
+
+```bash
+export NO_OPENMP=1
+```

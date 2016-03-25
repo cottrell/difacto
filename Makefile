@@ -10,7 +10,9 @@ all: build/difacto
 
 INCPATH = -I./src -I./include -I./dmlc-core/include -I./ps-lite/include -I./dmlc-core/src -I$(DEPS_PATH)/include
 PROTOC = ${DEPS_PATH}/bin/protoc
-CFLAGS = -std=c++11 -fopenmp -fPIC -O3 -ggdb -Wall -finline-functions $(INCPATH) -DDMLC_LOG_FATAL_THROW=0 $(ADD_CFLAGS)
+# OSX clang no inline-functions. TODO: ifndef NO_OPENMP
+CFLAGS = -std=c++11 -fPIC -O3 -ggdb -Wall $(INCPATH) -DDMLC_LOG_FATAL_THROW=0 $(ADD_CFLAGS)
+# CFLAGS = -std=c++11 -fopenmp -fPIC -O3 -ggdb -Wall -finline-functions $(INCPATH) -DDMLC_LOG_FATAL_THROW=0 $(ADD_CFLAGS)
 
 ifeq ($(NO_REVERSE_ID), 1)
 CFLAGS += -DREVERSE_FEATURE_ID=0

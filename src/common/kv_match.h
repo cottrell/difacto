@@ -91,7 +91,7 @@ size_t KVMatch(
 
   // shorten the matching range
   auto range = ps::FindRange(dst_key, src_key.front(), src_key.back()+1);
-  size_t grainsize = std::max(range.size() / nthreads + 5,
+  size_t grainsize = std::max(static_cast<size_t>(range.size() / nthreads + 5),
                               static_cast<size_t>(1024*1024));
   size_t n = 0;
   KVMatch<K, V>(
